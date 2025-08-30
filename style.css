@@ -1,0 +1,51 @@
+* { box-sizing: border-box; }
+:root {
+  --bg: #0b0f14;
+  --fg: #eef3f8;
+  --muted: #b8c2cc;
+  --glass: rgba(255,255,255,0.06);
+  --stroke: rgba(255,255,255,0.12);
+  --accent: #6ea8fe;
+}
+html, body { height: 100%; }
+body {
+  margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+  color: var(--fg);
+  background:
+    radial-gradient(1200px 800px at 10% -20%, #233246 0%, transparent 60%),
+    radial-gradient(1200px 800px at 90% 120%, #1a2839 0%, transparent 60%),
+    var(--bg);
+}
+.app { min-height: 100%; display: grid; grid-template-rows: auto 1fr auto; }
+.glass { background: var(--glass); backdrop-filter: blur(10px); border: 1px solid var(--stroke); border-radius: 16px; }
+.topbar { display: flex; align-items: center; gap: 12px; padding: 10px 14px; margin: 12px; }
+.topbar h1 { font-size: 18px; margin: 0; letter-spacing: .3px; }
+.spacer { flex: 1; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 14px; border-radius: 12px; border: 1px solid var(--stroke);
+  background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.05));
+  color: var(--fg); cursor: pointer; font-weight: 600;
+}
+.btn[disabled] { opacity: .45; cursor: not-allowed; }
+.btn:hover { border-color: rgba(255,255,255,0.25); }
+.content { margin: 12px; padding: 14px; display: grid; gap: 14px; }
+.loader, .player-wrap, .controls, .tips { padding: 12px; border-radius: 14px; border: 1px dashed var(--stroke); }
+.file-line, .url-line { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.url-line input {
+  flex: 1; min-width: 240px; padding: 10px 12px; border-radius: 12px; border: 1px solid var(--stroke);
+  background: rgba(255,255,255,0.03); color: var(--fg); outline: none;
+}
+.url-line .btn { white-space: nowrap; }
+.hint { color: var(--muted); font-size: 13px; }
+.player-wrap { display: grid; }
+video#player {
+  width: 100%; max-height: 60vh; background: #000; border-radius: 12px; border: 1px solid var(--stroke);
+}
+.controls { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; }
+.control { display: grid; gap: 6px; }
+.control label { font-size: 13px; color: var(--muted); }
+.control input[type="range"] { width: 100%; }
+.tips ul { margin: 0 0 8px 18px; color: var(--muted); }
+.status { font-size: 13px; color: var(--accent); }
+.foot { margin: 12px; padding: 8px 14px; display: flex; justify-content: center; }
